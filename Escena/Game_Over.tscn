@@ -1,0 +1,102 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scripts/Game_Over.gd" type="Script" id=1]
+[ext_resource path="res://Fondo.png" type="Texture" id=2]
+[ext_resource path="res://Text/BATTLEST.TTF" type="DynamicFontData" id=3]
+[ext_resource path="res://Botones UI/Start.png" type="Texture" id=4]
+[ext_resource path="res://Botones UI/Start2.png" type="Texture" id=5]
+[ext_resource path="res://Musica/05-Prayer.wav" type="AudioStream" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 48
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 55
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 50
+font_data = ExtResource( 3 )
+
+[node name="Menu" type="Node2D"]
+position = Vector2( 178.856, 318.418 )
+scale = Vector2( 1.2, 1.2 )
+script = ExtResource( 1 )
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Fondo" type="Sprite" parent="HUD"]
+position = Vector2( 178.856, 318.418 )
+scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Titulo" type="Label" parent="HUD"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 7.71143
+margin_top = 45.3604
+margin_right = 6.71143
+margin_bottom = -528.64
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0.952941, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 4
+custom_constants/line_spacing = 0
+text = "GAME OVER"
+
+[node name="btn_volver" type="TouchScreenButton" parent="HUD"]
+position = Vector2( 115.226, 418.364 )
+scale = Vector2( 0.440338, 0.843099 )
+normal = ExtResource( 4 )
+pressed = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="HUD/btn_volver"]
+margin_left = 25.1705
+margin_top = 19.3785
+margin_right = 288.171
+margin_bottom = 84.3785
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.0117647, 0.27451, 0.247059, 0.662745 )
+text = "VOLVER"
+
+[node name="btn_menu" type="TouchScreenButton" parent="HUD"]
+editor/display_folded = true
+position = Vector2( 114.321, 507.333 )
+scale = Vector2( 0.436154, 0.843099 )
+normal = ExtResource( 4 )
+pressed = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="HUD/btn_menu"]
+margin_left = 70.616
+margin_top = 17.7965
+margin_right = 249.616
+margin_bottom = 73.7965
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.0117647, 0.27451, 0.247059, 0.662745 )
+text = "MENU"
+
+[node name="Ultimo Puntaje" type="Label" parent="HUD"]
+margin_left = 50.0527
+margin_top = 179.368
+margin_right = 321.053
+margin_bottom = 230.368
+custom_fonts/font = SubResource( 3 )
+text = "LAST: 0"
+
+[node name="Mejor Puntaje" type="Label" parent="HUD"]
+margin_left = 56.0527
+margin_top = 278.368
+margin_right = 327.053
+margin_bottom = 329.368
+custom_fonts/font = SubResource( 3 )
+text = "BEST: 0"
+
+[node name="Musica" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+[connection signal="pressed" from="HUD/btn_volver" to="." method="_on_btn_volver_pressed"]
+[connection signal="pressed" from="HUD/btn_menu" to="." method="_on_btn_menu_pressed"]
