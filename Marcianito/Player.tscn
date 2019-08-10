@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Marcianito/Vehiculo 1 die.png" type="Texture" id=1]
+[ext_resource path="res://Marcianito/Vehiculo 1.png" type="Texture" id=2]
+[ext_resource path="res://Marcianito/Vehiculo 1 fly (2).png" type="Texture" id=3]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "die",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "Fall",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "Fly",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 9.8798
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 15.8585, 3.89027 )
+
+[node name="Node2D" type="RigidBody2D"]
+scale = Vector2( 8.69404, 7.79161 )
+mode = 1
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0.189072, 6.04929 )
+scale = Vector2( 0.207583, 0.200524 )
+frames = SubResource( 1 )
+animation = "Fall"
+
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
+position = Vector2( 1.73973, -3.93866 )
+shape = SubResource( 2 )
+
+[node name="CollisionPolygon2D2" type="CollisionShape2D" parent="."]
+position = Vector2( 1.96978, 2.99187 )
+shape = SubResource( 3 )
